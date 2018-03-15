@@ -1,18 +1,26 @@
 #include <GL/glut.h>
 #include <math.h>
 #include <stdio.h>
-GLfloat i = 5.0;
+GLdouble i = -5.0;
+GLdouble j = 5.0;
 
 void display(){
-
-	GLfloat x = 0.0f;
+	printf("Display called\n");
+	GLfloat x = 0.0;
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT);
-	gluOrtho2D(-5.0, 5.0, -1.0, 1.0);
-	glViewport(0, 0, 640, 480);
-
+	gluOrtho2D(i, j, -1.0, 1.0);
+	//glViewport(0, 0, 640, 480);
+	glBegin(GL_LINE_LOOP);
+		glVertex2f(-5.0, -1.0);
+		glVertex2f(-5.0,1.0);
+		glVertex2f(5.0, 1.0); 
+		glVertex2f(5.0, -1.0);
+	glEnd();
 	glBegin(GL_LINE_STRIP);
-	for(x = -4.0; x < 4.0; x += 0.1)
+	for(x = -7.0; x < 7.0; x += 0.1)
 		glVertex2f(x, sin(3.14159 * x)/(3.14159 * x));
 	glEnd();	
 	glFlush();
@@ -22,13 +30,25 @@ void display(){
 void myKeyboard(unsigned char key, int x, int y)
 {
 	
-	if(key == '+' && i < 5.0){
+	if(key == '+' && j > 1.0){
 		i++;
+		j--;
 	}
-	if(key == '-' && i > 1.0){
+	if(key == '-' && j < 7.0){
 		i--;
+		j++;
 	}
-	printf("Key is %c and i is %f\n", key, double(i));
+	if(key == GLUT_KEY_LEFT && j > 3){
+		i--;
+		j--;
+		printf("Left key is pressed");
+	}
+	if(key == GLUT_KEY_RIGHT && j < 7){
+		i++;
+		j++;
+		printf("Right Key is pressed");
+	}
+	printf("Key is %c and j is %f\n", key, double(j));
 	glutPostRedisplay();
 }
 
