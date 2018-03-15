@@ -30,22 +30,22 @@ void display(){
 void myKeyboard(unsigned char key, int x, int y)
 {
 	
-	if(key == '+' && j > 1.0){
+	if(key == 'w' && j > 1.0){
 		i++;
 		j--;
 	}
-	if(key == '-' && j < 7.0){
+	if(key == 's' && j < 7.0){
 		i--;
 		j++;
 	}
-	if(key == GLUT_KEY_LEFT && j > 3){
-		i--;
-		j--;
+	if(key == 'a' && i != -7.0){
+		i++;
+		j++;
 		printf("Left key is pressed");
 	}
-	if(key == GLUT_KEY_RIGHT && j < 7){
-		i++;
-		j++;
+	if(key == 'd' && j != 7.0){
+		i--;
+		j--;
 		printf("Right Key is pressed");
 	}
 	printf("Key is %c and j is %f\n", key, double(j));
