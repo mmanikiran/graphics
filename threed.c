@@ -9,15 +9,48 @@ void display(){
 	glOrtho(-3.2, 3.4, -2.4, 2.4, 1, 50);
 
 	glMatrixMode(GL_MODELVIEW);
-	gluLookAt(4, 0, 0, 0, 1, 0, 0, 1, 0);
+	gluLookAt(3, 4, 4, 0, 1, 0, 0, 1, 0);
 	
-	glColor3f(1.0, 1.0, 0.0);
+	glColor3f(0.5, 0.3, 0.5);
 	
 	glPushMatrix();
-	//glTranslated(0.5, 0.5, 0.5);
-	
+	glScaled(0.1, 1, 0.1);
 	glutSolidCube(1.0);
 	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0, 0, 1);
+	glScaled(0.1, 1, 0.1);
+	glutSolidCube(1.0);
+	glPopMatrix();
+
+	
+	glPushMatrix();
+	glTranslated(1, 0, 0);
+	glScaled(0.1, 1, 0.1);
+	glutSolidCube(1.0);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(1, 0, 1);
+	glScaled(0.1, 1, 0.1);
+	glutSolidCube(1.0);
+	glPopMatrix();
+
+	glColor3f(0.55, 0.44, 0.33);
+	glPushMatrix();
+	glTranslated(0, 1, 0.5);
+	glScaled(0.1, 1, 1);
+	glutSolidCube(1.0);
+	glPopMatrix();
+
+	glColor3f(0.7, 0.45, 0.23);
+	glPushMatrix();
+	glTranslated(0.5, 0.5, 0.5);
+	glScaled(1, 0.1, 1);
+	glutSolidCube(1.0);
+	glPopMatrix();
+
 	glFlush();
 }
 
